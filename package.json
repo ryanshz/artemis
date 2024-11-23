@@ -24,5 +24,8 @@
   "homepage": "https://github.com/ryanshz/artemis#readme",
   "devDependencies": {
     "electron": "^33.2.0"
+  },
+  "dependencies": {
+    "firebase": "^11.0.2"
   }
 }
