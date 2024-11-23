@@ -1,16 +1,20 @@
-//creates browser window
 const {BrowserWindow, app} = require('electron');
 const path = require('path');
 const isDev = (...args) => import('electron-is-dev').then(({default: isDev}) => fetch(...args));
+const waitOn = require('wait-on');
+
+//express import
 require('./express.js');
 
 let mainWindow;
 
-const createWindow = () => {
+const createWindow = async () => {
+    await waitOn({ resources: ['http://localhost:3000'], timeout: 10000 });
+
     mainWindow = new BrowserWindow({
         width: 1280,
         height: 720,
-        useContentSize: true
+        useContentSize: true,
     });
 
     //sets url for express server
@@ -18,7 +22,7 @@ const createWindow = () => {
     ? 'http://localhost:3000'
     : `file://${path.join(__dirname, './client/views/index.html')}`
 
-    mainWindow.loadURL('http://localhost:3000/');
+    mainWindow.loadURL(startURL);
     mainWindow.focus();
 }
 
