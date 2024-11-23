@@ -1,0 +1,28 @@
+{
+  "name": "artemis",
+  "version": "0.0.1",
+  "description": "cross-platform, lightweight note-taking application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ryanshz/artemis.git"
+  },
+  "keywords": [
+    "notebook",
+    "todo",
+    "note-taking",
+    "artemis"
+  ],
+  "author": "ryanshz",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/ryanshz/artemis/issues"
+  },
+  "homepage": "https://github.com/ryanshz/artemis#readme",
+  "devDependencies": {
+    "electron": "^33.2.0"
+  }
+}
