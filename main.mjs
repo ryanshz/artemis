@@ -1,10 +1,11 @@
-const {BrowserWindow, app} = require('electron');
-const path = require('path');
-const isDev = (...args) => import('electron-is-dev').then(({default: isDev}) => fetch(...args));
-const waitOn = require('wait-on');
+import { BrowserWindow, app } from 'electron';
+import path from 'path';
+import isDev from 'electron-is-dev';
+import waitOn from 'wait-on';
 
 //express import
-require('./express.js');
+import './express.mjs';
+
 
 let mainWindow;
 
@@ -20,7 +21,7 @@ const createWindow = async () => {
     //sets url for express server
     const startURL = isDev
     ? 'http://localhost:3000'
-    : `file://${path.join(__dirname, './client/views/index.html')}`
+    : `file://${path.join(path.dirname(new URL(import.meta.url).pathname), './client/views/index.html')}`
 
     mainWindow.loadURL(startURL);
     mainWindow.focus();

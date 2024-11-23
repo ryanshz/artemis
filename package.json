@@ -2,7 +2,8 @@
   "name": "artemis",
   "version": "0.0.1",
   "description": "cross-platform note taking and list creation app ",
-  "main": "main.js",
+  "main": "main.mjs",
+  "type": "module",
   "scripts": {
     "start": "electron ."
   },

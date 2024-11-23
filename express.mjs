@@ -1,16 +1,19 @@
-const path = require('path');
-const express = require('express');
-const { initializeApp } = require('firebase/app');
-const firebaseConfig = require('./apikeys-donotpush');
+import path from 'path';
+import express from 'express';
+import { initializeApp } from 'firebase/app';
+import { getDatabase } from 'firebase/database';
+import firebaseConfig from './apikeys-donotpush.mjs';
 
 //routes
 
 //base setup
 const app = express();
 const firebase = initializeApp(firebaseConfig);
+const database = getDatabase(firebase);
 
 const port = 3000;
 const hostname = 'localhost';
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 const server = app.listen(port, hostname, () => {
     console.log(`server running at http://${hostname}:${server.address().port}`);
