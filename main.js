@@ -1,22 +1,38 @@
 //creates browser window
-const { app, BrowserWindow } = require('electron');
+const {BrowserWindow, app} = require('electron');
+const path = require('path');
+const isDev = (...args) => import('electron-is-dev').then(({default: isDev}) => fetch(...args));
+require('./express.js');
+
+let mainWindow;
 
 const createWindow = () => {
-    const mainWindow = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         width: 1280,
-        height: 720
+        height: 720,
+        useContentSize: true
     });
-    mainWindow.loadFile('index.html');
+
+    //sets url for express server
+    const startURL = isDev
+    ? 'http://localhost:3000'
+    : `file://${path.join(__dirname, './client/views/index.html')}`
+
+    mainWindow.loadURL('http://localhost:3000/');
+    mainWindow.focus();
 }
 
-//[mac] when app closed, keep open
+//start app
 app.whenReady().then(() => {
     createWindow();
+
+    //[mac] when app closed, keep open
     app.on('activate', () => {
         if(BrowserWindow.getAllWindows().length === 0){
             createWindow();
         }
     });
+
 })
 
 //[linux + windows] when app closed, close app

@@ -26,6 +26,8 @@
     "electron": "^33.2.0"
   },
   "dependencies": {
+    "electron-is-dev": "^3.0.1",
+    "express": "^4.21.1",
     "firebase": "^11.0.2"
   }
 }
