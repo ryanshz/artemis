@@ -1,4 +1,4 @@
 # artemis
-cross-platform note taking app that prioritizes efficiency and speed.
+cross-platform note taking and list creation app.
 
 with planned android and iOS support
