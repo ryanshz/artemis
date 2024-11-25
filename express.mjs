@@ -2,7 +2,7 @@ import path from 'path';
 import express from 'express';
 import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
-import firebaseConfig from './apikeys-donotpush.mjs';
+import firebaseConfig from './api-config.mjs';
 
 //routes
 
