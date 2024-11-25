@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo/favicon-16x16.png">
+    <link rel="manifest" href="logo/site.webmanifest">
+    <link rel="stylesheet" href="../styling/output.css">
+    <title>artemis</title>
+  </head>
+  <body class="bg-base-300">
+    <header class="navbar font-mono bg-base-100">
+      <section class="flex-1 pt-1">
+        <a href="/" class="pl-4 py-1 text-2xl font-bold">
+            <img
+                id="logo-image"
+                class="inline pb-1 pr-2"
+                src="logo/android-chrome-512x512.png"
+                alt="logo"
+                width="40"
+            />artemis
+        </a>
+      </section>
+    </header>
+
+    <main>
+      <section class="m-8 space-y-8">
+        <div class="card bg-base-100 shadow-xl rounded-none flex-initial min-h-screen">
+          <div class="space-y-3 m-5">
+              <h2 class="font-bold text-xl font-mono">welcome to artemis!</h2>
+              <p>a cross-platform note taking and list creation app.</p>
+              <p>we're currently using: electron, chromium, node.js, express, tailwind, firebase</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <footer class="font-mono bg-base-100"> 
+      <h2 class="pl-4 py-1">&copy;ryanshz 2025</h2>
+    </footer>
+  </body>
+  <script src="./renderer.js"></script>
+</html>

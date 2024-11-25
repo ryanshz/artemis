@@ -21,7 +21,7 @@ const createWindow = async () => {
     //sets url for express server
     const startURL = isDev
     ? 'http://localhost:3000'
-    : `file://${path.join(path.dirname(new URL(import.meta.url).pathname), './client/views/index.html')}`
+    : `file://${path.join(path.dirname(new URL(import.meta.url).pathname), './src/views/index.html')}`
 
     mainWindow.loadURL(startURL);
     mainWindow.focus();
