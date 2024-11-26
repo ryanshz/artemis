@@ -5,6 +5,7 @@ import { getDatabase } from 'firebase/database';
 import firebaseConfig from './api-config.mjs';
 
 //routes
+import router from './src/router.mjs'
 
 //base setup
 const app = express();
@@ -35,3 +36,5 @@ app.use(express.static(path.join(__dirname, '/src/')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/src/views/index.html'));
 });
+
+app.get('/createuser', router);
