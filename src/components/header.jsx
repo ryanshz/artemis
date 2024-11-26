@@ -6,7 +6,7 @@ const Header = () => {
                 <img
                     id="logo-image"
                     className="inline pb-1 pr-2"
-                    src="logo/android-chrome-512x512.png"
+                    src="/android-chrome-512x512.png"
                     alt="logo"
                     width={40}
                 />
