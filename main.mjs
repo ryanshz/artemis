@@ -2,6 +2,7 @@ import { app, BrowserWindow } from 'electron';
 import { join } from 'path';
 import isDev from 'electron-is-dev';
 
+//electron setup
 let mainWindow;
 
 function createWindow() {
@@ -14,7 +15,7 @@ function createWindow() {
   });
 
   const startURL = isDev
-    ? 'http://localhost:3000'
+    ? `http://localhost:5000`
     : `file://${join(__dirname, '../build/index.html')}`;
 
   mainWindow.loadURL(startURL);
