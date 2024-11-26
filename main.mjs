@@ -1,48 +1,37 @@
-import { BrowserWindow, app } from 'electron';
-import path from 'path';
+import { app, BrowserWindow } from 'electron';
+import { join } from 'path';
 import isDev from 'electron-is-dev';
-import waitOn from 'wait-on';
-
-//express import
-import './express.mjs';
-
 
 let mainWindow;
 
-const createWindow = async () => {
-    await waitOn({ resources: ['http://localhost:3000'], timeout: 10000 });
+function createWindow() {
+  mainWindow = new BrowserWindow({
+    width: 1200,
+    height: 720,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
 
-    mainWindow = new BrowserWindow({
-        width: 1280,
-        height: 720,
-        useContentSize: true,
-    });
-
-    //sets url for express server
-    const startURL = isDev
+  const startURL = isDev
     ? 'http://localhost:3000'
-    : `file://${path.join(path.dirname(new URL(import.meta.url).pathname), './src/views/index.html')}`
+    : `file://${join(__dirname, '../build/index.html')}`;
 
-    mainWindow.loadURL(startURL);
-    mainWindow.focus();
+  mainWindow.loadURL(startURL);
+
+  mainWindow.on('closed', () => (mainWindow = null));
 }
 
-//start app
-app.whenReady().then(() => {
-    createWindow();
+app.on('ready', createWindow);
 
-    //[mac] when app closed, keep open
-    app.on('activate', () => {
-        if(BrowserWindow.getAllWindows().length === 0){
-            createWindow();
-        }
-    });
-
-})
-
-//[linux + windows] when app closed, close app
 app.on('window-all-closed', () => {
-    if(process.platform !== 'darwin') {
-        app.quit();
-    }
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('activate', () => {
+  if (mainWindow === null) {
+    createWindow();
+  }
 });
